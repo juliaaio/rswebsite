@@ -67,7 +67,9 @@
 
         @include('layouts.partials.navbar')
 
-        <a class="cta-btn d-none d-sm-block" href="#appointment">Make an Appointment</a>
+        
+
+
 
       </div>
 
@@ -81,10 +83,10 @@
     @include('sections.stats')
     @include('sections.about')
     @include('sections.services')
-    @include('sections.appointment')
+    {{-- @include('sections.appointment') --}}
     @include('sections.departments')
     @include('sections.doctors')
-    @include('sections.faq')
+    {{-- @include('sections.faq') --}}
     @include('sections.testimonials')
     @include('sections.gallery')
     @include('sections.contact')
