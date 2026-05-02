@@ -38,7 +38,7 @@
     <div class="col-md-10 p-4 main-content">
       
       <div class="d-flex justify-content-between align-items-center mb-4">
-        <h4>Halo, <span class="fw-bold text-primary">Julia Nazli Mehlika</span>!</h4>
+        <h4>Halo, <span class="fw-bold text-primary">Julia</span>!</h4>
         
         @if($punya_no_rm)
             <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-2">
