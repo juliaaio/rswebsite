@@ -1,137 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - Medilab Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-
-  <!-- Favicons -->
-  <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
-  <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/vendor/aos/aos.css" rel="stylesheet') }}">
-  <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Medilab
-  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-  * Updated: Aug 07 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Pasien - CityCare</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <style>
+    body { background-color: #f1f7fd; font-family: 'Open Sans', sans-serif; }
+    .sidebar { background: #fff; height: 100vh; border-right: 1px solid #e0e0e0; position: fixed; width: inherit; }
+    .main-content { margin-left: 16.666667%; }
+    .nav-link { color: #2c4964; font-weight: 500; padding: 15px 20px; }
+    .nav-link.active { background: #f1f7fd; color: #1977cc; border-right: 4px solid #1977cc; }
+    .card-medis { border: none; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .rm-number { font-size: 24px; font-weight: 700; color: #1977cc; }
+  </style>
 </head>
+<body>
 
-<body class="index-page">
-
-  <header id="header" class="header sticky-top">
-
-    <div class="topbar d-flex align-items-center">
-      <div class="container d-flex justify-content-center justify-content-md-between">
-        <div class="contact-info d-flex align-items-center">
-          <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
-          <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
-        </div>
-        <div class="social-links d-none d-md-flex align-items-center">
-          <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-          <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-        </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 d-none d-md-block sidebar p-0">
+      <div class="p-4 text-center">
+        <h4 class="fw-bold text-primary">CityCare</h4>
       </div>
-    </div><!-- End Top Bar -->
+      <nav class="nav flex-column mt-3">
+        <a class="nav-link active" href="#">Dashboard</a>
+        <a class="nav-link" href="{{ route('patient.booking') }}">Booking Jadwal</a>
+        <a class="nav-link" href="#">Riwayat Medis</a>
+        <a class="nav-link text-danger" href="{{ url('/') }}">Keluar</a>
+      </nav>
+    </div>
 
-    <div class="branding d-flex align-items-center">
+    <div class="col-md-10 p-4 main-content">
 
-      <div class="container position-relative d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center me-auto">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="{{ asset('assets/img/logo.png') }}" alt=""> -->
-          <h1 class="sitename">Medilab</h1>
-        </a>
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4>Halo, <span class="fw-bold text-primary">{{ auth()->user()->name }}</span>!</h4>
 
-        @include('layouts.partials.navbar')
+        @if($patient)
+          <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-2">
+            Pasien Terverifikasi
+          </span>
+        @else
+          <span class="badge bg-warning-subtle text-warning border border-warning-subtle rounded-pill px-3 py-2">
+            Menunggu Aktivasi
+          </span>
+        @endif
+      </div>
 
-        
+      <div class="row mb-4">
 
+        <!-- CARD RM -->
+        <div class="col-md-4">
+          <div class="card card-medis p-4 h-100">
+            <p class="text-muted text-center small">Nomor Rekam Medis</p>
 
+            @if($patient)
+              <p class="rm-number text-center">{{ $patient->no_rm }}</p>
+              <hr>
+              <div class="small">
+                <p><strong>NIK:</strong> {{ $patient->nik }}</p>
+                <p><strong>Tgl Lahir:</strong> {{ $patient->tanggal_lahir ?? '-' }}</p>
+                <p><strong>Gender:</strong> {{ $patient->gender ?? '-' }}</p>
+                <p><strong>Alamat:</strong> {{ $patient->alamat ?? '-' }}</p>
+              </div>
+            @else
+              <div class="text-center">
+                <h5 class="text-danger">BELUM TERSEDIA</h5>
+                <p class="small text-muted">Anda belum terdaftar sebagai pasien.</p>
+                <a href="{{ route('patient.booking') }}" class="btn btn-primary btn-sm w-100">
+                  Aktivasi No RM
+                </a>
+              </div>
+            @endif
+          </div>
+        </div>
+
+        <!-- RIWAYAT -->
+        <div class="col-md-8">
+          <div class="card card-medis p-4 h-100">
+
+            @if($patient)
+              <h5 class="fw-bold mb-3">Riwayat Kunjungan</h5>
+
+              @if($visits->isEmpty())
+                <p class="text-muted">Belum ada riwayat kunjungan</p>
+              @else
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Tanggal</th>
+                      <th>Poli</th>
+                      <th>Dokter</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($visits as $visit)
+                      <tr>
+                        <td>{{ $visit->tanggal }}</td>
+                        <td>{{ $visit->poli }}</td>
+                        <td>{{ $visit->dokter }}</td>
+                        <td>{{ $visit->status }}</td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              @endif
+
+            @else
+              <div class="text-center">
+                <h5>Belum Ada Riwayat</h5>
+                <a href="{{ route('patient.booking') }}" class="btn btn-outline-primary">
+                  Buat Janji Pertama
+                </a>
+              </div>
+            @endif
+
+          </div>
+        </div>
 
       </div>
 
     </div>
-
-  </header>
-
-  <main class="main">
-
-    @include('sections.hero')
-    @include('sections.stats')
-    @include('sections.about')
-    @include('sections.services')
-    {{-- @include('sections.appointment') --}}
-    @include('sections.departments')
-    @include('sections.doctors')
-    {{-- @include('sections.faq') --}}
-    @include('sections.testimonials')
-    @include('sections.gallery')
-    @include('sections.contact')
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-   
-
-    
-
-    
-
-  </main>
-
-  @include('layouts.partials.footer')
-   
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
-  <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
-  <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-  <script src="{{ asset('assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
-  <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-
-  <!-- Main JS File -->
-  <script src="{{ asset('assets/js/main.js') }}"></script>
+  </div>
+</div>
 
 </body>
-
 </html>

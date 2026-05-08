@@ -1,24 +1,31 @@
 <?php
-
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
-
- Route::get('/welcome', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\BookingController;
 
 Route::get('/', function () {
-    return view('dashboard'); 
+    return view('landing');
 });
 
-// Route untuk dashboard pasien
-Route::get('/login', function () {
-    return view('login');
+Route::get('/dashboard', [PatientController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Route untuk Dashboard Pasien (File: patient.blade.php)
-Route::get('/patient/dashboard', function () {
-    return view('patient'); 
+Route::middleware('auth')->group(function () {
+
+    Route::get('/booking', [BookingController::class, 'create'])
+        ->name('patient.booking');
+
+    Route::post('/booking', [BookingController::class, 'store'])
+        ->name('patient.booking.store');
+
 });
 
-
-Route::view('/about','pages.about');
+require __DIR__.'/auth.php';

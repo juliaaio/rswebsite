@@ -55,7 +55,16 @@
     </li>
     <li><a href="#contact">Contact</a></li>
 
-    <li><a href="{{ url('/login') }}" class="btn-login-nav">Login</a></li>
+    <li><a class="nav-link scrollto appointment-btn" 
+       href="{{ route('login') }}" 
+       style="background: #1977cc; color: #fff; border-radius: 50px; margin: 0 5px; padding: 8px 25px;">
+       Login
+    </a></li>
+    <li><a class="nav-link scrollto appointment-btn" 
+       href="{{ route('register') }}" 
+       style="background: #fff; color: #1977cc; border-radius: 50px; margin: 0 5px; padding: 8px 25px; border: 2px solid #1977cc;">
+       Register
+    </a></li>
   </ul>
   <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
 </nav>

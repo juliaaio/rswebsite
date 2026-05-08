@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -16,10 +16,10 @@
     .rm-number { font-size: 24px; font-weight: 700; color: #1977cc; }
   </style>
 </head>
-<body>
+<body> -->
 
-{{-- Simulasi Logika: Ganti true jadi false untuk ngetes --}}
-@php $punya_no_rm = true; @endphp
+<!-- {{-- Simulasi Logika: Ganti true jadi false untuk ngetes --}}
+@php $punya_no_rm = false; @endphp
 
 <div class="container-fluid">
   <div class="row">
@@ -29,7 +29,7 @@
       </div>
       <nav class="nav flex-column mt-3">
         <a class="nav-link active" href="#"><i class="bi bi-house-door me-2"></i> Dashboard</a>
-        <a class="nav-link" href="{{ url('/patient/booking') }}"><i class="bi bi-calendar-check me-2"></i> Booking Jadwal</a>
+        <a class="nav-link" href="{{ route('patient.booking') }}"><i class="bi bi-calendar-check me-2"></i> Booking Jadwal</a>
         <a class="nav-link" href="#"><i class="bi bi-file-earmark-medical me-2"></i> Riwayat Medis</a>
         <a class="nav-link text-danger" href="{{ url('/') }}"><i class="bi bi-box-arrow-left me-2"></i> Keluar</a>
       </nav>
@@ -38,7 +38,7 @@
     <div class="col-md-10 p-4 main-content">
       
       <div class="d-flex justify-content-between align-items-center mb-4">
-        <h4>Halo, <span class="fw-bold text-primary">Julia</span>!</h4>
+        <h4>Halo, <span class="fw-bold text-primary">{{ auth()->user()->name }}</span>!</h4>
         
         @if($punya_no_rm)
             <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-2">
@@ -70,7 +70,7 @@
                 <div class="text-center py-3">
                     <h4 class="text-danger fw-bold">BELUM TERSEDIA</h4>
                     <p class="small text-muted">Anda belum terdaftar sebagai pasien medis resmi.</p>
-                    <a href="{{ url('/patient/booking') }}" class="btn btn-primary btn-sm rounded-pill w-100 mt-2">
+                    <a href="{{ route('patient.booking') }}" class="btn btn-primary btn-sm rounded-pill w-100 mt-2">
                         <i class="bi bi-pencil-square me-1"></i> Aktivasi No. RM
                     </a>
                 </div>
@@ -123,9 +123,9 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div> -->
         
-        <div class="mt-auto text-end">
+        <!-- <div class="mt-auto text-end">
             <a href="#" class="small text-decoration-none">Lihat Semua Riwayat →</a>
         </div>
 
@@ -134,7 +134,7 @@
             <i class="bi bi-folder-x text-muted" style="font-size: 3.5rem;"></i>
             <h5 class="mt-3 fw-bold">Belum Ada Riwayat Kunjungan</h5>
             <p class="text-muted small">Riwayat medis kamu akan muncul otomatis setelah kunjungan pertama.</p>
-            <a href="{{ url('/patient/booking') }}" class="btn btn-outline-primary btn-sm rounded-pill mt-2 px-4">
+            <a href="{{ route('patient.booking') }}" class="btn btn-outline-primary btn-sm rounded-pill mt-2 px-4">
                 Buat Janji Temu Pertama
             </a>
         </div>
@@ -150,7 +150,7 @@
             <i class="bi bi-plus-circle text-primary mb-2" style="font-size: 2rem;"></i>
             <h6 class="fw-bold">Daftar Berobat Sekarang</h6>
             <p class="text-muted small">Daftar poli tanpa antre di loket RS.</p>
-            <a href="{{ url('/patient/booking') }}" class="btn btn-primary w-100 rounded-pill">Klik untuk Booking</a>
+            <a href="{{ route('patient.booking') }}" class="btn btn-primary w-100 rounded-pill">Klik untuk Booking</a>
           </div>
         </div>
       </div>
@@ -160,4 +160,4 @@
 </div>
 
 </body>
-</html>
+</html> -->
