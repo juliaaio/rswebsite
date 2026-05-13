@@ -1,11 +1,11 @@
 @extends('layouts.medilab-auth')
 
-@section('title', 'Login - Medilab')
+@section('title', 'Login - CityCare')
 
 @section('content')
 <div class="text-center mb-5">
-    <div class="logo mb-3">MediLab</div>
-    <h2 class="fw-bold text-dark mb-1">Welcome Back</h2>
+    <div class="logo mb-3">CityCare </div>
+    <h2 class="fw-bold text-dark mb-1">Selamat Datang Kembali</h2>
     <p class="text-muted">Silahkan login ke akun Anda</p>
 </div>
 
@@ -51,15 +51,17 @@
         <div class="form-check">
             <input class="form-check-input" type="checkbox" name="remember" id="remember">
             <label class="form-check-label" for="remember">
-                Ingat saya
+                <strong>Ingatkan saya</strong>
             </label>
         </div>
         <a href="{{ route('password.request') }}" class="text-decoration-none fw-semibold">Lupa Password?</a>
     </div>
-    
-    <button type="submit" class="btn btn-primary btn-lg w-100 mb-4">
-        <i class="fas fa-sign-in-alt me-2"></i> Masuk Sekarang
+ 
+<div class="text-center">
+    <button type="submit" class="btn btn-primary btn-lg w-75 mb-4">
+        <i class="fas fa-sign-in-alt me-2"></i> Login
     </button>
+</div>
 </form>
 
 <div class="text-center">
@@ -68,5 +70,11 @@
             Daftar sekarang
         </a>
     </p>
+</div>
+
+<div class="text-center mt-3">
+    <a href="/" class="text-dark text-decoration-none fw-medium">
+        ← Kembali ke Beranda
+    </a>
 </div>
 @endsection

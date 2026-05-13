@@ -15,6 +15,7 @@ class Patient extends Model
         'tanggal_lahir',
         'gender',
         'alamat',
+        'no_hp',
     ];
 
     public function visits()

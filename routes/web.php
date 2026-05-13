@@ -28,4 +28,14 @@ Route::middleware('auth')->group(function () {
 
 });
 
+Route::get(
+    '/get-doctors/{poli}',
+    [BookingController::class, 'getDoctors']
+);
+
+Route::get(
+    '/get-schedules/{doctor}',
+    [BookingController::class, 'getSchedules']
+);
+
 require __DIR__.'/auth.php';

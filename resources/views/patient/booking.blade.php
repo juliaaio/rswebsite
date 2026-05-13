@@ -3,83 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking</title>
+    <title>Booking Pemeriksaan</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link
+    rel="stylesheet"
+    href="{{ asset('css/booking.css') }}"
+    >
+
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
 </head>
 <body>
 
 <div class="container py-5">
 
-    <h2 class="mb-4">Booking Pemeriksaan</h2>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
 
-    <form action="{{ route('patient.booking.store') }}" method="POST">
+            <div class="card booking-card p-4">
 
-        @csrf
+                <div class="mb-4 text-center">
+                    <h2 class="fw-bold text-primary">
+                        Booking Pemeriksaan
+                    </h2>
 
-        {{-- PASIEN BARU --}}
-        @if(!$patient)
+                    <p class="text-muted">
+                        Lengkapi data dan lakukan booking pemeriksaan
+                    </p>
+                </div>
 
-            <div class="mb-3">
-                <label>Nama Lengkap</label>
-                <input type="text" name="nama" class="form-control" required>
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form action="{{ route('patient.booking.store') }}" method="POST">
+
+                    @csrf
+
+                    @include('patient.partials.identity')
+
+                     @include('patient.partials.booking')
+
+                   
+
+                    {{-- ========================= --}}
+                    {{-- STEP 2 BOOKING --}}
+                    {{-- ========================= --}}
+
+                   
+
+                </form>
+
             </div>
 
-            <div class="mb-3">
-                <label>Tanggal Lahir</label>
-                <input type="date" name="tanggal_lahir" class="form-control" required>
-            </div>
-
-            <div class="mb-3">
-                <label>Gender</label>
-                <select name="gender" class="form-control">
-                    <option value="Perempuan">Perempuan</option>
-                    <option value="Laki-laki">Laki-laki</option>
-                </select>
-            </div>
-
-            <div class="mb-3">
-                <label>Alamat</label>
-                <textarea name="alamat" class="form-control"></textarea>
-            </div>
-
-        @else
-
-            {{-- PASIEN LAMA --}}
-            <div class="alert alert-success">
-                Data pasien ditemukan: <strong>{{ $patient->nama }}</strong>
-            </div>
-
-        @endif
-
-        <hr>
-
-        {{-- FORM BOOKING --}}
-        <div class="mb-3">
-            <label>Tanggal Pemeriksaan</label>
-            <input type="date" name="tanggal" class="form-control" required>
         </div>
-
-        <div class="mb-3">
-            <label>Poli</label>
-            <select name="poli" class="form-control">
-                <option value="Poli Umum">Poli Umum</option>
-                <option value="Poli Gigi">Poli Gigi</option>
-            </select>
-        </div>
-
-        <div class="mb-3">
-            <label>Dokter</label>
-            <input type="text" name="dokter" class="form-control">
-        </div>
-
-        <button type="submit" class="btn btn-primary">
-            Booking Sekarang
-        </button>
-
-    </form>
+    </div>
 
 </div>
+
+<script src="{{ asset('js/booking.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
 
 </body>
 </html>

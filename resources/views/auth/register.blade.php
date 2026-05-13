@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="text-center mb-5">
-    <div class="logo mb-3">MediLab</div>
+    <div class="logo mb-3">CityCare</div>
     <h2 class="fw-bold text-dark mb-1">Buat Akun Baru</h2>
     <p class="text-muted">Daftar untuk memulai</p>
 </div>
@@ -13,7 +13,7 @@
     @csrf
     
     <div class="row">
-        <div class="col-md-6 mb-4">
+        <div class="col-md-12 mb-1">
             <label class="form-label fw-semibold mb-2">Nama Lengkap</label>
             <input type="text" 
                    class="form-control form-control-lg @error('name') is-invalid @enderror" 
@@ -25,7 +25,7 @@
             @enderror
         </div>
 
-        <div class="col-md-6 mb-4">
+        <div class="col-md-12 mb-1">
             <label class="form-label fw-semibold mb-2">NIK</label>
             <input type="text" 
                    class="form-control form-control-lg @error('nik') is-invalid @enderror" 
@@ -37,7 +37,7 @@
             @enderror
         </div>
 
-        <div class="col-md-6 mb-4">
+        <div class="col-md-12 mb-1">
             <label class="form-label fw-semibold mb-2">Email</label>
             <input type="email" 
                    class="form-control form-control-lg @error('email') is-invalid @enderror" 
@@ -50,7 +50,7 @@
         </div>
     </div>
     
-    <div class="mb-4">
+    <div class="mb-1">
         <label class="form-label fw-semibold mb-2">Password</label>
         <input type="password" 
                class="form-control form-control-lg @error('password') is-invalid @enderror" 
@@ -61,17 +61,19 @@
         @enderror
     </div>
     
-    <div class="mb-4">
+    <div class="mb-3">
         <label class="form-label fw-semibold mb-2">Konfirmasi Password</label>
         <input type="password" 
                class="form-control form-control-lg" 
                name="password_confirmation" 
                required>
     </div>
-    
-    <button type="submit" class="btn btn-primary btn-lg w-100 mb-4">
-        <i class="fas fa-user-plus me-2"></i> Daftar Sekarang
+
+<div class="text-center">
+    <button type="submit" class="btn btn-primary btn-lg w-75 mb-4">
+        <i class="fas fa-user-plus me-2"></i> Submit
     </button>
+</div>
 </form>
 
 <div class="text-center">
@@ -80,5 +82,11 @@
             Masuk sekarang
         </a>
     </p>
+</div>
+
+<div class="text-center mt-3">
+    <a href="/" class="text-dark text-decoration-none fw-medium">
+        ← Kembali ke Beranda
+    </a>
 </div>
 @endsection

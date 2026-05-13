@@ -12,26 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('visits', function (Blueprint $table) {
-
     $table->id();
-
-    $table->foreignId('patient_id')->constrained()->cascadeOnDelete();
-
-    $table->date('tanggal');
-
+    $table->foreignId('doctor_id')->after('patient_id')->constrained()->onDelete('cascade');
+    $table->date('tanggal')->change();
     $table->string('poli');
-
     $table->string('dokter')->nullable();
-
     $table->integer('queue_number')->nullable();
-
     $table->enum('status', [
         'booked',
         'rescheduled',
         'cancelled',
         'done'
     ])->default('booked');
-
     $table->timestamps();
 });
     }

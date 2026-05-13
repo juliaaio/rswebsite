@@ -1,0 +1,39 @@
+
+        body{
+            background:#f4f7fb;
+        }
+
+        .booking-card{
+            border:none;
+            border-radius:20px;
+            box-shadow:0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .step-title{
+            font-weight:700;
+            color:#0d6efd;
+        }
+
+        .step-section{
+            display:none;
+        }
+
+        .step-section.active{
+            display:block;
+        }
+
+        .form-control,
+        .form-select{
+            border-radius:12px;
+            padding:12px;
+        }
+
+        .btn-primary{
+            border-radius:12px;
+            padding:10px 20px;
+        }
+
+        .readonly-box{
+            background:#eef3f8;
+        }
+  

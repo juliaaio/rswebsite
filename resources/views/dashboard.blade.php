@@ -68,15 +68,34 @@
                     </div>
                     <p class="rm-title mb-1">Status Rekam Medis</p>
                     
-                    @if(Auth::user()->no_rm)
-                        <h2 class="rm-value active">{{ Auth::user()->no_rm }}</h2>
-                        <p class="text-muted small">Nomor rekam medis Anda aktif.</p>
-                    @else
-                        <h2 class="rm-value">BELUM TERSEDIA</h2>
-                        <p class="text-muted small mb-4">Anda belum terdaftar sebagai pasien tetap kami.</p>
-                        <a href="{{ route('patient.booking') }}" class="btn btn-primary-custom w-100">
-                            <i class="bi bi-shield-check me-2"></i> Aktivasi No RM
+                    @if($patient)
+
+                        <h2 class="rm-value active">
+                            {{ $patient->no_rm }}
+                        </h2>
+
+                        <p class="text-muted small">
+                            Nomor rekam medis Anda aktif.
+                        </p>
+
+                     @else
+
+                        <h2 class="rm-value">
+                            BELUM TERSEDIA
+                        </h2>
+
+                        <p class="text-muted small mb-4">
+                            Anda belum terdaftar sebagai pasien tetap kami.
+                        </p>
+
+                        <a href="{{ route('patient.booking') }}"
+                         class="btn btn-primary-custom w-100">
+
+                         <i class="bi bi-shield-check me-2"></i>
+                            Aktivasi No RM
+
                         </a>
+
                     @endif
                 </div>
             </div>
@@ -84,7 +103,76 @@
             <div class="col-md-8">
                 <div class="card-custom d-flex justify-content-between align-items-center h-100">
                     <div style="max-width: 60%;">
-                        <h5 class="fw-bold mb-3">Lengkapi Profil Kesehatan Anda</h5>
+                        @if($patient)
+
+                        <h5 class="fw-bold mb-4">
+                            Identitas Pasien
+                         </h5>
+
+                         <div class="row small">
+
+                        <div class="col-md-6 mb-3">
+                            <strong>Nama</strong>
+                    <div class="text-muted">
+                        {{ $patient->nama }}
+                    </div>
+                </div>
+
+                    <div class="col-md-6 mb-3">
+                        <strong>NIK</strong>
+                        <div class="text-muted">
+                            {{ $patient->nik }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <strong>Tanggal Lahir</strong>
+                        <div class="text-muted">
+                            {{ $patient->tanggal_lahir }}
+                        </div>
+                    </div>
+
+                <div class="col-md-6 mb-3">
+                    <strong>Gender</strong>
+                    <div class="text-muted">
+                        {{ $patient->gender }}
+                    </div>
+                </div>
+
+                    <div class="col-md-6 mb-3">
+                        <strong>No Hp</strong>
+                        <div class="text-muted">
+                            {{ $patient->no_hp }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <strong>Alamat</strong>
+                        <div class="text-muted">
+                            {{ $patient->alamat }}
+                        </div>
+                    </div>
+
+                </div>
+
+                @else
+
+                    <h5 class="fw-bold mb-3">
+                        Lengkapi Profil Kesehatan Anda
+                    </h5>
+
+                    <p class="text-muted small mb-4">
+                        Anda belum memiliki data pasien.
+                    </p>
+
+                    <a href="{{ route('patient.booking') }}"
+                    class="btn btn-primary-custom">
+
+                        Aktivasi Sekarang
+
+                    </a>
+
+                @endif
                         <p class="text-muted small mb-4">Lengkapi data pribadi untuk memudahkan tenaga medis dalam memberikan pelayanan terbaik.</p>
                         <div class="d-flex gap-3">
                             <span class="small fw-bold text-primary"><i class="bi bi-check2-circle me-1"></i> Data Identitas</span>
@@ -102,7 +190,7 @@
                         <a href="#" class="text-primary text-decoration-none small fw-bold">Lihat Semua</a>
                     </div>
 
-                    @if(Auth::user()->no_rm && isset($visits) && !$visits->isEmpty())
+                    @if($patient && !$visits->isEmpty())
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead class="text-muted small text-uppercase">
@@ -115,12 +203,31 @@
                                 </thead>
                                 <tbody>
                                     @foreach($visits as $visit)
-                                    <tr class="align-middle">
-                                        <td class="fw-bold">{{ $visit->tanggal }}</td>
-                                        <td><span class="badge bg-light text-dark border">{{ $visit->poli }}</span></td>
-                                        <td>{{ $visit->dokter }}</td>
-                                        <td><span class="badge bg-success-subtle text-success">{{ $visit->status }}</span></td>
-                                    </tr>
+
+                                        <tr class="align-middle">
+
+                                            <td class="fw-bold">
+                                                 {{ $visit->tanggal }}
+                                            </td>
+
+                                             <td>
+                                                 <span class="badge bg-light text-dark border">
+                                                    {{ $visit->doctor->poli->nama ?? '-' }}
+                                                 </span>
+                                            </td>
+
+                                             <td>
+                                                 {{ $visit->doctor->nama ?? '-' }}
+                                             </td>
+
+                                            <td>
+                                                <span class="badge bg-success-subtle text-success">
+                                                     {{ $visit->status }}
+                                                 </span>
+                                            </td>
+
+                                        </tr>
+
                                     @endforeach
                                 </tbody>
                             </table>

@@ -6,17 +6,17 @@
       <div class="container position-relative">
 
         <div class="welcome position-relative" data-aos="fade-down" data-aos-delay="100">
-          <h2>WELCOME TO MEDILAB</h2>
-          <p>We are team of talented designers making websites with Bootstrap</p>
+          <h2>WELCOME TO CITYCARE</h2>
+          <p>"Kesehatan Anda adalah prioritas kami dengan layanan<br>
+            yang cepat, aman, dan nyaman."</p>
         </div><!-- End Welcome -->
 
         <div class="content row gy-4">
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="why-box" data-aos="zoom-out" data-aos-delay="200">
-              <h3>Why Choose Medilab?</h3>
+              <h3>Mengapa Memilih CityCare?</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
+                CityCare hadir dengan pelayanan kesehatan profesional, fasilitas modern, dan tenaga medis terpercaya untuk memberikan perawatan terbaik bagi setiap pasien. Kami mengutamakan kenyamanan, keamanan, serta pelayanan yang cepat dan responsif demi kesehatan Anda dan keluarga.
               </p>
               <div class="text-center">
                 <a href="#about" class="more-btn"><span>Learn More</span> <i class="bi bi-chevron-right"></i></a>
@@ -31,24 +31,24 @@
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box" data-aos="zoom-out" data-aos-delay="300">
                     <i class="bi bi-clipboard-data"></i>
-                    <h4>Corporis voluptates officia eiusmod</h4>
-                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                    <h4>Pelayanan 24 Jam</h4>
+                    <p>Layanan kesehatan tersedia selama 24 jam untuk memastikan pasien mendapatkan penanganan kapan saja dibutuhkan.</p>
                   </div>
                 </div><!-- End Icon Box -->
 
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box" data-aos="zoom-out" data-aos-delay="400">
                     <i class="bi bi-gem"></i>
-                    <h4>Ullamco laboris ladore pan</h4>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                    <h4>Dokter Profesional</h4>
+                    <p>Didukung oleh tenaga medis berpengalaman dan profesional dalam memberikan pelayanan terbaik bagi pasien.</p>
                   </div>
                 </div><!-- End Icon Box -->
 
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box" data-aos="zoom-out" data-aos-delay="500">
                     <i class="bi bi-inboxes"></i>
-                    <h4>Labore consequatur incidid dolore</h4>
-                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                    <h4>Pelayanan Ramah Pasien</h4>
+                    <p>Mengutamakan kenyamanan, keamanan, dan kepuasan pasien dengan pelayanan yang ramah dan responsif.</p>
                   </div>
                 </div><!-- End Icon Box -->
 
