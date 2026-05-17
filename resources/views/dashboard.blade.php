@@ -133,7 +133,7 @@
                     </div>
 
                 <div class="col-md-6 mb-3">
-                    <strong>Gender</strong>
+                    <strong>Jenis Kelamin</strong>
                     <div class="text-muted">
                         {{ $patient->gender }}
                     </div>
@@ -176,7 +176,7 @@
                         <p class="text-muted small mb-4">Lengkapi data pribadi untuk memudahkan tenaga medis dalam memberikan pelayanan terbaik.</p>
                         <div class="d-flex gap-3">
                             <span class="small fw-bold text-primary"><i class="bi bi-check2-circle me-1"></i> Data Identitas</span>
-                            <span class="small fw-bold text-muted"><i class="bi bi-three-dots me-1"></i> Riwayat Alergi</span>
+                            <!-- <span class="small fw-bold text-muted"><i class="bi bi-three-dots me-1"></i> Riwayat Alergi</span> -->
                         </div>
                     </div>
                     <img src="https://img.freepik.com/free-vector/hospital-building-concept-illustration_114360-8440.jpg" alt="Hospital Illustration" style="width: 150px; border-radius: 15px;">
@@ -186,7 +186,7 @@
             <div class="col-12 mt-4">
                 <div class="card-custom">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5 class="fw-bold"><i class="bi bi-clock-history me-2 text-primary"></i> Riwayat Medis</h5>
+                        <h5 class="fw-bold"><i class="bi bi-clock-history me-2 text-primary"></i> Riwayat Kunjungan</h5>
                         <a href="#" class="text-primary text-decoration-none small fw-bold">Lihat Semua</a>
                     </div>
 
@@ -221,9 +221,31 @@
                                              </td>
 
                                             <td>
-                                                <span class="badge bg-success-subtle text-success">
-                                                     {{ $visit->status }}
-                                                 </span>
+                                                <span class="badge
+
+                                            @if($visit->status == 'booked')
+                                            bg-secondary
+
+                                            @elseif($visit->status == 'waiting')
+                                            bg-warning text-dark
+
+                                            @elseif($visit->status == 'ongoing')
+                                            bg-primary
+
+                                            @elseif($visit->status == 'completed')
+                                            bg-success
+
+                                            @elseif($visit->status == 'cancelled')
+                                            bg-danger
+
+                                            @endif
+
+                                            px-3 py-2 rounded-pill
+                                            ">
+
+                                                {{ $visit->status }}
+
+                                            </span>
                                             </td>
 
                                         </tr>

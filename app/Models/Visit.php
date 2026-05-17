@@ -9,6 +9,7 @@ class Visit extends Model
     protected $fillable = [
         'patient_id',
         'doctor_id',
+        'doctor_schedule_id',
         'tanggal',
         'queue_number',
         'status',
@@ -20,7 +21,15 @@ class Visit extends Model
     }
 
     public function doctor()
-{
-    return $this->belongsTo(Doctor::class);
-}
+    {
+        return $this->belongsTo(Doctor::class);
+    }
+
+     public function schedule()
+        {
+            return $this->belongsTo(
+                DoctorSchedule::class,
+                'doctor_schedule_id'
+            );
+        }
 }

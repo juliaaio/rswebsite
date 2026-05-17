@@ -54,6 +54,7 @@ class BookingController extends Controller
         $request->validate([
             'tanggal' => 'required',
             'doctor' => 'required',
+            'schedule' => 'required',
         ]);
 
         // FORMAT TANGGAL BOOKING
@@ -100,27 +101,63 @@ class BookingController extends Controller
         }
 
         // HITUNG ANTREAN
-        $queue = Visit::whereDate(
+        // AMBIL DOKTER
+        $doctor = Doctor::with('poli')->findOrFail(
+            $request->doctor
+        );
+
+
+        // AMBIL POLI
+        $poli = $doctor->poli;
+
+
+        // PREFIX POLI
+        $prefix = $poli->prefix;
+
+
+        // CARI ANTREAN TERAKHIR DI POLI YANG SAMA
+        $lastVisit = Visit::whereDate(
             'tanggal',
             $tanggalBooking
         )
-        ->where(
-            'doctor_id',
-            $request->doctor
-        )
-        ->count() + 1;
+        ->whereHas('doctor', function ($query) use ($poli) {
+
+            $query->where(
+                'poli_id',
+                $poli->id
+            );
+
+        })
+        ->latest('id')
+        ->first();
+
+
+        // DEFAULT NOMOR
+        $lastNumber = 0;
+
+
+        // JIKA ADA ANTREAN SEBELUMNYA
+        if ($lastVisit) {
+
+            $lastNumber = (int) filter_var(
+                $lastVisit->queue_number,
+                FILTER_SANITIZE_NUMBER_INT
+            );
+
+        }
+
+
+        // HASIL ANTREAN
+        $queue = $prefix . ($lastNumber + 1);
 
         // SIMPAN VISIT
         Visit::create([
 
             'patient_id' => $patient->id,
-
             'tanggal' => $tanggalBooking,
-
             'doctor_id' => $request->doctor,
-
+            'doctor_schedule_id' => $request->schedule,
             'queue_number' => $queue,
-
             'status' => 'booked',
 
         ]);
@@ -133,4 +170,75 @@ class BookingController extends Controller
 
     }
 
+   public function queue()
+{
+
+    $patient = Patient::where(
+        'nik',
+        auth()->user()->nik
+    )->first();
+
+
+    $visits = Visit::with([
+        'doctor.poli',
+        'schedule'
+    ])
+    ->where('patient_id', $patient->id)
+    ->whereNotIn('status', [
+    'completed',
+    'cancelled'
+    ])
+    ->orderBy('tanggal', 'asc')
+    ->get();
+
+
+    foreach ($visits as $visit) {
+
+        $waitingBefore = Visit::whereDate(
+            'tanggal',
+            $visit->tanggal
+        )
+        ->where('doctor_id', $visit->doctor_id)
+        ->whereIn('status', [
+            'waiting',
+            'ongoing'
+        ])
+        ->where('id', '<', $visit->id)
+        ->count();
+
+
+        $visit->waitingBefore =
+            $waitingBefore;
+
+        $visit->estimatedMinutes =
+            $waitingBefore * 15;
+
+    }
+
+
+    return view(
+        'patient.queue',
+        compact('visits')
+    );
+
+}
+
+public function cancelVisit($id)
+{
+
+    $visit = Visit::findOrFail($id);
+
+    $visit->update([
+
+        'status' => 'cancelled'
+
+    ]);
+
+    return back()
+        ->with(
+            'success',
+            'Booking berhasil dibatalkan.'
+        );
+
+}
 }

@@ -53,11 +53,13 @@
 
                             <label class="form-label">
                                 Jadwal Tersedia
-                                <input
-                                    type="hidden"
-                                    id="available-days"
-                                >
                             </label>
+
+                            
+                            <input
+                                type="hidden"
+                                id="available-days"
+                            >    
 
                             <div
                                 id="schedule-list"

@@ -190,29 +190,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     data.forEach(schedule => {
 
-                        scheduleList.innerHTML += `
+            scheduleList.innerHTML += `
 
-                            <button
-                                type="button"
-                                class="btn btn-outline-primary mb-2 w-100 schedule-btn"
-                                data-day="${schedule.day}"
-                            >
+    <label
+        class="btn btn-outline-primary mb-2 w-100 text-start schedule-label"
+    >
 
-                                ${schedule.day}
+        <input
+            type="radio"
+            name="schedule"
+            value="${schedule.id}"
+            data-day="${schedule.day}"
+            class="schedule-radio"
+            hidden
+        >
 
-                                :
+        ${schedule.day}
 
-                                ${schedule.time_start}
+        :
 
-                                -
+        ${schedule.time_start}
 
-                                ${schedule.time_finish}
+        -
 
-                            </button>
+        ${schedule.time_finish}
 
-                        `;
+    </label>
 
-                    });
+`;
+
+});
 
                 });
 
@@ -223,32 +230,34 @@ document.addEventListener('DOMContentLoaded', function () {
     // =====================
 // CLICK JADWAL
 // =====================
+    scheduleList.addEventListener('change', function (e) {
 
-document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('schedule-radio')) {
 
-    if (e.target.classList.contains('schedule-btn')) {
+        // RESET
+        document.querySelectorAll('.schedule-label')
+            .forEach(label => {
 
-        // RESET SEMUA BUTTON
-        document.querySelectorAll('.schedule-btn')
-            .forEach(btn => {
-
-                btn.classList.remove(
+                label.classList.remove(
                     'btn-primary',
                     'text-white'
                 );
 
-                btn.classList.add(
+                label.classList.add(
                     'btn-outline-primary'
                 );
 
             });
 
-        // BUTTON AKTIF
-        e.target.classList.remove(
+        // ACTIVE
+        const activeLabel =
+            e.target.closest('.schedule-label');
+
+        activeLabel.classList.remove(
             'btn-outline-primary'
         );
 
-        e.target.classList.add(
+        activeLabel.classList.add(
             'btn-primary',
             'text-white'
         );
@@ -256,22 +265,18 @@ document.addEventListener('click', function (e) {
         let selectedDay =
             e.target.dataset.day;
 
-        // RESET INPUT TANGGAL
         tanggalInput.value = '';
 
-        // DISABLED DULU
         tanggalInput.disabled = true;
 
-        // FILTER TANGGAL
         enableDateByDay(selectedDay);
 
-        // ENABLE SETELAH FILTER
         tanggalInput.disabled = false;
 
     }
 
 });
-    
+
     // =====================
     // FILTER HARI TANGGAL
     // =====================
