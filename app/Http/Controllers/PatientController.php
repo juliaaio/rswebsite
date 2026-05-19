@@ -92,4 +92,29 @@ public function updatePatient(Request $request, $id)
 
 }
 
+public function riwayat()
+{
+    $patient = Patient::where(
+        'nik',
+        auth()->user()->nik
+    )->first();
+
+    $visits = collect();
+
+    if ($patient) {
+
+        $visits = Visit::with('doctor.poli')
+            ->where('patient_id', $patient->id)
+            ->latest()
+            ->get();
+    }
+
+    return view(
+        'patient.riwayat',
+        compact('visits')
+    );
 }
+
+}
+
+

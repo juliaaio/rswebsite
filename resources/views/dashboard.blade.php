@@ -135,7 +135,11 @@
                 <div class="col-md-6 mb-3">
                     <strong>Jenis Kelamin</strong>
                     <div class="text-muted">
-                        {{ $patient->gender }}
+                        @if($patient->gender == 'L')
+                            Laki-laki
+                        @else
+                            Perempuan
+                        @endif
                     </div>
                 </div>
 
@@ -187,7 +191,11 @@
                 <div class="card-custom">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="fw-bold"><i class="bi bi-clock-history me-2 text-primary"></i> Riwayat Kunjungan</h5>
-                        <a href="#" class="text-primary text-decoration-none small fw-bold">Lihat Semua</a>
+                        <a
+                        href="{{ route('riwayat.kunjungan') }}"
+                        class="text-primary text-decoration-none small fw-bold">
+                        Lihat Semua
+                    </a>
                     </div>
 
                     @if($patient && !$visits->isEmpty())
@@ -195,8 +203,8 @@
                             <table class="table table-hover">
                                 <thead class="text-muted small text-uppercase">
                                     <tr>
-                                        <th>Tanggal</th>
-                                        <th>Poliklinik</th>
+                                        <th>Tanggal Pemeriksaan</th>
+                                        <th>Poli</th>
                                         <th>Dokter</th>
                                         <th>Status</th>
                                     </tr>
@@ -221,31 +229,32 @@
                                              </td>
 
                                             <td>
-                                                <span class="badge
 
-                                            @if($visit->status == 'booked')
-                                            bg-secondary
+@php
 
-                                            @elseif($visit->status == 'waiting')
-                                            bg-warning text-dark
+    $statusClass = match($visit->status) {
 
-                                            @elseif($visit->status == 'ongoing')
-                                            bg-primary
+        'booked' => 'bg-primary-subtle text-primary',
 
-                                            @elseif($visit->status == 'completed')
-                                            bg-success
+        'cancelled' => 'bg-danger-subtle text-danger',
 
-                                            @elseif($visit->status == 'cancelled')
-                                            bg-danger
+        'completed' => 'bg-success-subtle text-success',
 
-                                            @endif
+        'pending' => 'bg-warning-subtle text-warning',
 
-                                            px-3 py-2 rounded-pill
-                                            ">
+        default => 'bg-secondary-subtle text-secondary'
+    };
 
-                                                {{ $visit->status }}
+@endphp
 
-                                            </span>
+<a
+    href="{{ route('patient.booking') }}"
+    class="badge rounded-pill px-3 py-2 text-decoration-none {{ $statusClass }}"
+>
+
+    {{ $visit->status }}
+
+</a>
                                             </td>
 
                                         </tr>

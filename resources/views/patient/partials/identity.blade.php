@@ -93,28 +93,19 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.c
                                 Jenis Kelamin
                             </label>
 
-                            <select
-                                name="gender"
-                                class="form-select {{ $patient ? 'readonly-box' : '' }}"
-                                {{ $patient ? 'disabled' : '' }}
-                            >
+                            <select name="gender" class="form-select">
                                 <option value="">
-                                    -- pilih gender --
+                                    -- Pilih Gender --
                                 </option>
-
-                                <option
-                                    value="Laki-laki"
-                                    {{ ($patient && $patient->gender == 'Laki-laki') ? 'selected' : '' }}
-                                >
+                                <option value="L"
+                                    {{ $patient->gender == 'L' ? 'selected' : '' }}>
                                     Laki-laki
                                 </option>
-
-                                <option
-                                    value="Perempuan"
-                                    {{ ($patient && $patient->gender == 'Perempuan') ? 'selected' : '' }}
-                                >
+                                <option value="P"
+                                    {{ $patient->gender == 'P' ? 'selected' : '' }}>
                                     Perempuan
                                 </option>
+
                             </select>
                         </div>
 

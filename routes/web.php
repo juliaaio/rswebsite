@@ -94,3 +94,8 @@ Route::put(
 )->name('patient.visit.cancel');
 
 require __DIR__.'/auth.php';
+
+Route::get(
+    '/riwayat-kunjungan',
+    [PatientController::class, 'riwayat']
+)->name('riwayat.kunjungan');

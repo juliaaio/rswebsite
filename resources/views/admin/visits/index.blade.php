@@ -46,6 +46,9 @@
                         <th>Patient</th>
                         <th>Doctor</th>
                         <th>Jadwal</th>
+                        <th>Alamat</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Poli</th>
                         <th>Queue</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -79,7 +82,6 @@
                         </td>
 
 
-
                         <td>
 
                             @if($visit->schedule)
@@ -96,8 +98,22 @@
 
                         </td>
 
+                        <td>
+                            {{ $visit->patient->alamat }}
+                        </td>
 
+                        <td>
+                            @if($visit->patient->gender == 'L')
+                                Laki-laki
+                            @else
+                                Perempuan
+                            @endif
+                        </td>
 
+                        <td>
+                            {{ $visit->doctor->poli->nama }}
+                        </td>
+                        
                         <td>
 
                             <span class="badge bg-primary">
@@ -107,8 +123,6 @@
                             </span>
 
                         </td>
-
-
 
                         <td>
 

@@ -166,16 +166,6 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a
-                        href="#"
-                        class="nav-link"
-                    >
-                        <i class="bi bi-clock-history me-2"></i>
-                        Queue
-                    </a>
-                </li>
-
             </ul>
 
         </div>

@@ -37,6 +37,7 @@
                         <th>Nama</th>
                         <th>NIK</th>
                         <th>No HP</th>
+                        <th>Jenis Kelamin</th>
                         <th>Action</th>
 
                     </tr>
@@ -64,6 +65,15 @@
                         <td>
                             {{ $patient->no_hp }}
                         </td>
+
+                        <td>
+                            @if($patient->gender == 'L')
+                                Laki-laki
+                            @else
+                                Perempuan
+                            @endif
+                        </td>
+
 
                         <td>
 

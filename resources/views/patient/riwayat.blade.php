@@ -9,7 +9,7 @@
   <style>
     :root {
       --primary-color: #1977cc;
-      --bg-color: #f4f8fc;
+      --bg-color: #f8fbfe;
       --text-dark: #2c4964;
     }
     body { padding-top: 80px; background-color: var(--bg-color); font-family: 'Open Sans', sans-serif; color: var(--text-dark); overflow-x: hidden; }
@@ -62,10 +62,10 @@
 .queue-hero{
     background:linear-gradient(135deg,#1977cc,#0d6efd);
     border-radius:30px;
-    padding:35px;
+    padding:55px;
     color:#fff;
     text-align:center;
-    box-shadow:0 15px 40px rgba(25,119,204,.25);
+    box-shadow:0 10px 30px rgba(25,119,204,.25);
     margin-bottom:30px;
 }
 
@@ -75,58 +75,32 @@
 }
 
 .queue-hero h1{
-    font-size:72px;
+    font-size:95px;
     font-weight:800;
-    margin:5px 0 10px;
+    margin:10px 0;
 }
 
 .queue-status{
-    background:rgba(255,255,255,.15);
-    border:1px solid rgba(255,255,255,.2);
-    backdrop-filter:blur(10px);
+    display:inline-block;
     padding:10px 24px;
     border-radius:999px;
-    font-weight:700;
-    letter-spacing:.5px;
-}
-
-.queue-icon{
-    width:70px;
-    height:70px;
-    border-radius:50%;
-    background:rgba(255,255,255,.15);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:0 auto 20px;
-    font-size:30px;
+    background:rgba(255,255,255,.2);
+    font-weight:600;
+    text-transform:capitalize;
 }
 
 .queue-card{
     background:#fff;
     border-radius:24px;
-    padding:22px;
+    padding:28px;
     box-shadow:0 5px 20px rgba(0,0,0,.04);
     height:100%;
-    transition:.3s;
-
-    min-height:180px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
-
-.queue-card:hover{
-
-    transform:translateY(-4px);
 }
 
 .queue-card small{
-    color:#334155;
+    color:#94a3b8;
     display:block;
-    margin-bottom:12px;
-    font-size:15px;
-    font-weight:600;
+    margin-bottom:10px;
 }
 
 .queue-card h3{
@@ -142,236 +116,99 @@
 }
 
 .info-label{
-     color:#334155;
-    font-size:15px;
-    font-weight:600;
-    margin-bottom:8px;
+    color:#94a3b8;
+    font-size:14px;
+    margin-bottom:6px;
 }
 
 .info-value{
-    font-weight:500;
-    font-size:16px;
-    line-height:1.6;
+    font-weight:600;
     color:#1e293b;
-}
-
-.info-item{
-    border-left:4px solid #1977cc;
-    padding-left:15px;
 }
 
 </style>
 
-    @if($visits->count())
-@foreach($visits as $visit)
+<div class="card-custom">
 
-<div class="row g-4 align-items-stretch">
+    <div class="d-flex justify-content-between align-items-center mb-4">
 
-    <div class="col-lg-7">
-
-        <div class="queue-hero">
-
-    <div class="queue-icon">
-        <i class="bi bi-person-badge"></i>
-    </div>
-
-    <small>
-        Nomor Antrean Anda
-    </small>
-
-    <h1>
-        {{ $visit->queue_number }}
-    </h1>
-
-    <span class="badge
-
-@if($visit->status == 'booked')
-bg-secondary
-
-@elseif($visit->status == 'waiting')
-bg-warning text-dark
-
-@elseif($visit->status == 'ongoing')
-bg-primary
-
-@elseif($visit->status == 'completed')
-bg-success
-
-@elseif($visit->status == 'cancelled')
-bg-danger
-
-@endif
-
-px-4 py-2 rounded-pill text-uppercase
-">
-
-    {{ $visit->status }}
-
-</span>
-
-@if($visit->status == 'booked')
-
-<form
-    action="{{ route('patient.visit.cancel', $visit->id) }}"
-    method="POST"
-    class="mt-3"
->
-
-    @csrf
-    @method('PUT')
-
-    <button
-        type="submit"
-        class="btn btn-light text-danger fw-semibold rounded-pill px-4"
-    >
-        Batalkan Booking
-    </button>
-
-</form>
-
-@endif
-
-</div>
-    </div>
-
-    <div class="col-lg-5">
-
-        <div class="d-flex flex-column gap-4 h-100">
-
-    <div>
-
-        <div class="queue-card">
-
-            <small>
-                Estimasi Waktu Tunggu
-            </small>
-
-            <h3>
-                {{ $visit->estimatedMinutes }} Menit
-            </h3>
-
-        </div>
+        <h4 class="fw-bold">
+            Riwayat Kunjungan
+        </h4>
 
     </div>
 
+    <div class="table-responsive">
 
+        <table class="table table-hover">
 
-    <div>
+            <thead>
 
-        <div class="queue-card h-100">
+                <tr>
+                    <th>Tanggal Pemeriksaan</th>
+                    <th>Poli</th>
+                    <th>Dokter</th>
+                    <th>Status</th>
+                </tr>
 
-            <small>
-                Pasien Sebelum Anda
-            </small>
+            </thead>
 
-            <h3>
-                {{ $visit->waitingBefore }} Pasien
-            </h3>
+            <tbody>
 
-        </div>
+                @forelse($visits as $visit)
 
-    </div>
+                <tr>
+
+                    <td>
+                        {{ $visit->tanggal }}
+                    </td>
+
+                    <td>
+                        {{ $visit->doctor->poli->nama ?? '-' }}
+                    </td>
+
+                    <td>
+                        {{ $visit->doctor->nama ?? '-' }}
+                    </td>
+
+                    <td>
+                    @php
+                        $statusClass = match($visit->status) {
+                            'booked' => 'bg-primary-subtle text-primary',
+                            'cancelled' => 'bg-danger-subtle text-danger',
+                            'completed' => 'bg-success-subtle text-success',
+                            'pending' => 'bg-warning-subtle text-warning',
+                            default => 'bg-secondary-subtle text-secondary' };
+                    @endphp
+
+                    <a
+                        href="{{ route('patient.booking') }}"
+                        class="badge rounded-pill px-3 py-2 text-decoration-none {{ $statusClass }}">{{ $visit->status }}
+                    </a>
+
+                    </td>
+
+                </tr>
+
+                @empty
+
+                <tr>
+
+                    <td colspan="4" class="text-center py-4">
+                        Belum ada riwayat kunjungan
+                    </td>
+
+                </tr>
+
+                @endforelse
+
+            </tbody>
+
+        </table>
 
     </div>
 
 </div>
-
-
-</div>
-
-
-
-<div class="info-card">
-
-    <h5 class="fw-bold mb-4">
-        Informasi Pemeriksaan
-    </h5>
-
-
-    <div class="row">
-
-        <div class="col-md-4 mb-4">
-            <div class="info-item">
-
-            <div class="info-label">
-                Poliklinik
-            </div>
-
-            <div class="info-value">
-                {{ $visit->doctor->poli->nama ?? '-' }}
-            </div>
-            </div>
-        </div>
-
-
-
-        <div class="col-md-4 mb-4">
-
-            <div class="info-label">
-                Dokter
-            </div>
-
-            <div class="info-value">
-                {{ $visit->doctor->nama ?? '-' }}
-            </div>
-
-        </div>
-
-        <div class="col-md-4 mb-4">
-
-    <div class="info-label">
-        Hari Praktik
-    </div>
-
-    <div class="info-value">
-
-        @if($visit->schedule)
-
-            {{ $visit->schedule->day }}
-
-            <br>
-
-            {{ $visit->schedule->time_start }}
-            -
-            {{ $visit->schedule->time_finish }}
-
-        @else
-
-            Jadwal belum tersedia
-
-        @endif
-
-    </div>
-
-</div>
-
-        <div class="col-md-4 mb-4">
-
-            <div class="info-label">
-                Tanggal Pemeriksaan
-            </div>
-
-            <div class="info-value">
-                {{ $visit->tanggal }}
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-@endforeach
-
-@else
-
-<div class="alert alert-secondary rounded-4">
-
-    Tidak ada antrean aktif.
-
-</div>
-
-@endif
         
         @include('partials.footer')
     </div>

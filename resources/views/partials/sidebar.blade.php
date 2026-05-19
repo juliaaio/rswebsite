@@ -6,7 +6,7 @@
         <a class="nav-link {{ request()->routeIs('patient.booking') ? 'active' : '' }}" href="{{ route('patient.booking') }}">
             <i class="bi bi-calendar-event me-3"></i> Booking Jadwal
         </a>
-        <a class="nav-link" href="#"><i class="bi bi-journal-medical me-3"></i> Riwayat Kunjungan</a>
+        <a class="nav-link  {{ request()->routeIs('riwayat.kunjungan') ? 'active' : '' }}" href="{{ route('riwayat.kunjungan') }}"><i class="bi bi-journal-medical me-3"></i> Riwayat Kunjungan</a>
         <a
             class="nav-link {{ request()->routeIs('patient.queue') ? 'active' : '' }}"
             href="{{ route('patient.queue') }}"
