@@ -71,5 +71,38 @@
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        </script>
+<script>
+function toggleRegisterPassword() {
+    var x = document.getElementById("registerPassword");
+
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
+
+function toggleConfirmPassword() {
+    var x = document.getElementById("confirmPassword");
+
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
+</script>
+<script>
+function toggleLoginPassword() {
+    var x = document.getElementById("loginPassword");
+
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
+</script>
 </body>
 </html>

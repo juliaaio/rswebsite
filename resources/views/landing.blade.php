@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - Medilab Bootstrap Template</title>
+  <title>Index - CityCare Bootstrap Template</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -44,8 +44,8 @@
     <div class="topbar d-flex align-items-center">
       <div class="container d-flex justify-content-center justify-content-md-between">
         <div class="contact-info d-flex align-items-center">
-          <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
-          <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
+          <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">citycare@gmail.com</a></i>
+          <i class="bi bi-phone d-flex align-items-center ms-4"><span>0123-4567-8910</span></i>
         </div>
         <div class="social-links d-none d-md-flex align-items-center">
           <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
@@ -62,7 +62,7 @@
         <a href="index.html" class="logo d-flex align-items-center me-auto">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="{{ asset('assets/img/logo.png') }}" alt=""> -->
-          <h1 class="sitename">Medilab</h1>
+          <h1 class="sitename">CityCare</h1>
         </a>
 
         @include('layouts.partials.navbar')

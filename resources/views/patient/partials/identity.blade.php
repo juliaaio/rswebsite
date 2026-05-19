@@ -1,4 +1,7 @@
- {{-- ========================= --}}
+ <link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+{{-- ========================= --}}
                     {{-- STEP 1 IDENTITAS --}}
                     {{-- ========================= --}}
 
@@ -23,30 +26,44 @@
 
                         <div class="mb-3">
                             <label class="form-label">
-                                NIK
+                                NIK (Nomor Induk Kependudukan)
                             </label>
+
+                            <div class="input-group">
+                             <span class="input-group-text">
+                                <i class="bi bi-card-text"></i>
+                             </span>
 
                             <input
                                 type="text"
                                 name="nik"
+                                placeholder="Masukkan NIK Anda"
                                 class="form-control {{ $patient ? 'readonly-box' : '' }}"
                                 value="{{ $patient->nik ?? auth()->user()->nik }}"
                                 {{ $patient ? 'readonly' : '' }}
                             >
+                            </div>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">
                                 Nama Lengkap
                             </label>
+                            
+                            <div class="input-group">
+                             <span class="input-group-text">
+                                <i class="bi bi-person"></i>
+                             </span>
 
                             <input
                                 type="text"
                                 name="nama"
+                                placeholder="Masukkan Nama Lengkap"
                                 class="form-control {{ $patient ? 'readonly-box' : '' }}"
                                 value="{{ $patient->nama ?? auth()->user()->name }}"
                                 {{ $patient ? 'readonly' : '' }}
                             >
+                             </div>
                         </div>
 
                         <div class="mb-3">
@@ -54,14 +71,21 @@
                                 Tanggal Lahir
                             </label>
 
+                            <div class="input-group">
+                             <span class="input-group-text">
+                                <i class="bi bi-person"></i>
+                             </span>
+                             
                             <input
                                  type="text"
                                 id="tanggal_lahir"
                                 name="tanggal_lahir"
+                                placeholder="mm/dd/yyyy"
                                 class="form-control {{ $patient ? 'readonly-box' : '' }}"
                                 value="{{ $patient->tanggal_lahir ?? '' }}"
                                 {{ $patient ? 'readonly' : '' }}
                             >
+                            </div>
                         </div>
 
                         <div class="mb-3">
@@ -96,16 +120,23 @@
 
                         <div class="mb-3">
                             <label class="form-label">
-                                Nomor Hp
+                                Nomor Telepon
                             </label>
+
+                            <div class="input-group">
+                             <span class="input-group-text">
+                                <i class="bi bi-telephone"></i>
+                             </span>
 
                             <input
                                 type="text"
                                 name="no_hp"
+                                placeholder="+62 8..."
                                 class="form-control {{ $patient ? 'readonly-box' : '' }}"
                                 value="{{ $patient->no_hp ?? '' }}"
                                 {{ $patient ? 'readonly' : '' }}
                             >
+                            </div>
                         </div>
 
                         <div class="mb-4">
@@ -113,12 +144,19 @@
                                 Alamat
                             </label>
 
+                            <div class="input-group">
+                             <span class="input-group-text">
+                                <i class="bi bi-person"></i>
+                             </span>
+                             
                             <textarea
                                 name="alamat"
                                 rows="3"
+                                placeholder="Masukkan Alamat Lengkap Anda"
                                 class="form-control {{ $patient ? 'readonly-box' : '' }}"
                                 {{ $patient ? 'readonly' : '' }}
                             >{{ $patient->alamat ?? '' }}</textarea>
+                            </div>
                         </div>
 
                         <div class="text-end">

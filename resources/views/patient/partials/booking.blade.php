@@ -1,4 +1,7 @@
- <div id="step-2" class="step-section">
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<div id="step-2" class="step-section">
 
                         <h4 class="step-title mb-4">
                             Step 2 - Booking Pemeriksaan
@@ -8,6 +11,10 @@
                             <label class="form-label">
                                 Poli
                             </label>
+                            <div class="input-group">
+                             <span class="input-group-text">
+                               <i class="bi bi-file-earmark-medical"></i>
+                             </span>
 
                             <select
                                 name="poli"
@@ -28,54 +35,69 @@
                             @endforeach
 
                             </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">
-                                Dokter
-                            </label>
-
-                            <select
-                                name="doctor"
-                                id="doctor"
-                                class="form-select"
-                                disabled
-                            >
-
-                            <option value="">
-                                Pilih Dokter
-                            </option>
-
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-
-                            <label class="form-label">
-                                Jadwal Tersedia
-                            </label>
-
-                            
-                            <input
-                                type="hidden"
-                                id="available-days"
-                            >    
-
-                            <div
-                                id="schedule-list"
-                                class="border rounded p-3 bg-light"
-                            >
-
-                                Pilih dokter terlebih dahulu
-
                             </div>
-
                         </div>
+<div class="mb-3">
 
-                        <div class="mb-3">
+    <label class="form-label">
+        Dokter
+    </label>
+
+    <div class="input-group">
+
+        <span class="input-group-text">
+            <i class="bi bi-person-check"></i>
+        </span>
+
+        <select
+            name="doctor"
+            id="doctor"
+            class="form-select"
+            disabled
+        >
+
+            <option value="">
+                Pilih Dokter
+            </option>
+
+        </select>
+
+    </div>
+
+</div>
+
+                       <div class="mb-3">
+
+    <label class="form-label">
+        Jadwal Tersedia
+
+        <input
+            type="hidden"
+            id="available-days"
+        >
+    </label>
+
+    <div
+        id="schedule-list"
+        class="schedule-list"
+    >
+
+        <i class="bi bi-clock me-2"></i>
+
+        Pilih Jadwal Pemeriksaan
+
+    </div>
+
+</div>
+
+                        <div class="mb-2">
                             <label class="form-label">
                                 Tanggal Pemeriksaan
                             </label>
+                            <div class="input-group">
+                             <span class="input-group-text">
+                                <i class="bi bi-calendar"></i>
+                             </span>
 
                                 <input
                                         type="text"
@@ -85,52 +107,60 @@
                                         placeholder="Pilih tanggal"
                                         disabled
                                 >
-                            
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">
-                                Keluhan
-                            </label>
+                       <div class="mb-2">
+    <label class="form-label">
+        Keluhan
+    </label>
 
-                            <textarea
-                                name="keluhan"
-                                rows="3"
-                                class="form-control"
-                                placeholder="Tuliskan keluhan Anda..."
-                            ></textarea>
-                        </div>
+    <div class="input-group">
+        <span class="input-group-text">
+            <i class="bi bi-exclamation-triangle"></i>
+        </span>
 
-                        <div class="mb-4">
-                            <label class="form-label">
-                                Alergi
-                            </label>
+        <textarea
+            name="keluhan"
+            rows="3"
+            class="form-control"
+            placeholder="Tuliskan Keluhan Anda..."
+        ></textarea>
+    </div>
+</div>
 
-                            <textarea
-                                name="alergi"
-                                rows="3"
-                                class="form-control"
-                                placeholder="Tuliskan alergi jika ada..."
-                            ></textarea>
-                        </div>
+<div class="mb-2">
+    <label class="form-label">
+        Alergi (Opsional)
+    </label>
 
-                        <div class="d-flex justify-content-between">
+    <div class="input-group">
+        <span class="input-group-text">
+            <i class="bi bi-exclamation-triangle"></i>
+        </span>
 
-                            <button
-                                type="button"
-                                class="btn btn-secondary"
-                                onclick="nextStep(1)"
-                            >
-                                Kembali
-                            </button>
+        <textarea
+            name="alergi"
+            rows="3"
+            class="form-control"
+            placeholder="Sebutkan Riwayat Alergi Makanan atau Obat"
+        ></textarea>
+    </div>
+</div>
 
-                            <button
-                                type="submit"
-                                class="btn btn-primary"
-                            >
-                                Booking Sekarang
-                            </button>
+<div class="d-flex justify-content-between mt-4">
+    <button
+        type="button"
+        class="btn btn-secondary"
+        onclick="nextStep(1)"
+    >
+        Kembali
+    </button>
 
-                        </div>
-
-                    </div>
+    <button
+        type="submit"
+        class="btn btn-primary px-4"
+    >
+        Booking Sekarang
+    </button>
+</div>

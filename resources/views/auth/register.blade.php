@@ -50,24 +50,41 @@
         </div>
     </div>
     
-    <div class="mb-1">
+    <div class="mb-3">
         <label class="form-label fw-semibold mb-2">Password</label>
-        <input type="password" 
-               class="form-control form-control-lg @error('password') is-invalid @enderror" 
-               name="password" 
-               required>
         @error('password')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
+        <div class="input-group">
+    <input type="password"
+           class="form-control form-control-lg"
+           name="password"
+           id="registerPassword">
+
+    <button type="button"
+            class="btn btn-light border"
+            onclick="toggleRegisterPassword()">
+        <i class="fas fa-eye"></i>
+    </button>
+</div>
     </div>
     
     <div class="mb-3">
         <label class="form-label fw-semibold mb-2">Konfirmasi Password</label>
+    <div class="input-group">
         <input type="password" 
-               class="form-control form-control-lg" 
-               name="password_confirmation" 
+               class="form-control form-control-lg"
+               name="password_confirmation"
+               id="confirmPassword"
                required>
+
+        <button type="button"
+                class="btn btn-light border"
+                onclick="toggleConfirmPassword()">
+            <i class="fas fa-eye"></i>
+        </button>
     </div>
+</div>
 
 <div class="text-center">
     <button type="submit" class="btn btn-primary btn-lg w-75 mb-4">

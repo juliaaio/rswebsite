@@ -4,13 +4,13 @@
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Medilab</span>
+            <span class="sitename">CityCare</span>
           </a>
           <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@example.com</span></p>
+            <p>Jl. Mastrip, Krajan Timur</p>
+            <p>Sumbersari, Jember 68121</p>
+            <p class="mt-3"><strong>Phone:</strong> <span>0123-4567-8910</span></p>
+            <p><strong>Email:</strong> <span>citycare@gmail.com</span></p>
           </div>
           <div class="social-links d-flex mt-4">
             <a href=""><i class="bi bi-twitter-x"></i></a>
@@ -21,7 +21,7 @@
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
+          <h4>Layanan Kami</h4>
           <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">About us</a></li>

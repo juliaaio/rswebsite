@@ -1,39 +1,79 @@
+body {
+    background: #f4f7fb;
+}
 
-        body{
-            background:#f4f7fb;
-        }
+.booking-card {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
 
-        .booking-card{
-            border:none;
-            border-radius:20px;
-            box-shadow:0 4px 20px rgba(0,0,0,0.05);
-        }
+.step-title {
+    font-weight: 700;
+    color: #0d6efd;
+}
 
-        .step-title{
-            font-weight:700;
-            color:#0d6efd;
-        }
+.step-section {
+    display: none;
+}
 
-        .step-section{
-            display:none;
-        }
+.step-section.active {
+    display: block;
+}
 
-        .step-section.active{
-            display:block;
-        }
+.form-control,
+.form-select {
+    border-radius: 12px;
+    padding: 12px;
+}
 
-        .form-control,
-        .form-select{
-            border-radius:12px;
-            padding:12px;
-        }
+.btn-primary {
+    border-radius: 12px;
+    padding: 10px 20px;
+}
 
-        .btn-primary{
-            border-radius:12px;
-            padding:10px 20px;
-        }
+.readonly-box {
+    background: #eef3f8;
+}
 
-        .readonly-box{
-            background:#eef3f8;
-        }
-  
+.input-group-text {
+    background: white;
+    border-right: none;
+}
+
+.form-control {
+    border-left: none;
+    box-shadow: none !important;
+}
+
+.form-control:focus {
+    box-shadow: none !important;
+}
+
+.schedule-box {
+    border: 1px solid #dbe5ee;
+    border-radius: 14px;
+    padding: 14px;
+    background: white;
+}
+
+.schedule-btn {
+    border-radius: 12px;
+    padding: 12px;
+    font-weight: 600;
+}
+
+.schedule-list {
+    width: 100%;
+    border: 1px solid #dbe5ee;
+    border-radius: 14px;
+    padding: 12px;
+    background: white;
+}
+
+.schedule-btn {
+    width: 100%;
+    border-radius: 12px;
+    padding: 12px;
+    font-weight: 600;
+}

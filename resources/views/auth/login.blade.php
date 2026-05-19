@@ -35,17 +35,20 @@
         @enderror
     </div>
     
-    <div class="mb-4">
-        <label class="form-label fw-semibold mb-2">Password</label>
-        <input type="password" 
-               class="form-control form-control-lg @error('password') is-invalid @enderror" 
-               name="password" 
-               required 
-               placeholder="••••••••">
-        @error('password')
-            <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
-    </div>
+<div class="input-group">
+    <input type="password"
+           class="form-control form-control-lg"
+           name="password"
+           id="loginPassword"
+           required
+           placeholder="••••••••">
+
+    <button type="button"
+            class="btn btn-light border"
+            onclick="toggleLoginPassword()">
+        <i class="fas fa-eye"></i>
+    </button>
+</div>
     
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div class="form-check">
